@@ -1,0 +1,105 @@
+/* The style of the css is going to have a crusades style */
+
+:root {
+    --boxcolor: linear-gradient(#5c5159, #a9a9a9);
+    --border: black solid 2px;
+    --infocardcolor: white;
+}
+
+body {
+   /* need a background that is going to look like a castle wall*/
+}
+
+main{
+    display: flex;
+    justify-content: space-between;
+    height: 50%;
+    margin: 5%;
+}
+
+.gifinner, .templar{
+    object-fit: contain;
+    z-index: 999; 
+    position: absolute; 
+    width: 100%;
+}
+
+.gifinner{
+    height: 100%;
+}
+
+header{
+    text-align: center;
+    border: var(--border);
+    background-image: var(--boxcolor);
+    padding: 7px;
+    margin: 5%;
+}
+
+.box {
+    border-radius: 20px;
+}
+
+.btn{
+    background-color: #d0d5d1;
+}
+
+.contentbox, .timerbox{
+    border:var(--border);
+    background-image: var(--boxcolor);
+}
+
+.contentbox{
+    display: flex;
+    flex: 0 0 72%;
+}
+
+.contentinner, .timerbox{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 899;
+}
+
+.contentinner{
+    width: 100%;
+    height: 100%;
+}
+
+
+.timerbox{
+    display: flex;
+    flex: 0 0 25%;
+}
+
+.titlebox, .questionbox, .infobox, .scorebox{
+    background-color: var(--infocardcolor);
+}
+
+.titlebox, .infobox{
+    border: var(--border);
+    z-index: 800;
+    flex: 0 0 25%;
+    width: 80%;
+    margin-top:5%;
+}
+
+.questionbox, .scorebox{
+    border: var(--border);
+    z-index: 800;
+    flex: 0 0 60%;
+    width: 80%;
+    margin: 5%;
+    position: relative;
+}
+
+.infobox{
+    position: relative;
+}
+
+.reset-btn{
+    position: absolute;
+    left: 50px;
+    bottom: 1%;
+}
