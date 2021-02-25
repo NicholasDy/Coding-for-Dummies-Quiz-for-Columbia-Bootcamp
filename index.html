@@ -11,7 +11,6 @@
         <h1>Crusade's Quiz</h1>
         <p>Are you prepared?</p>
         <button class="start-btn btn">Yes</button>
-        <button class="no-btn btn">No</button>
     </header>
     
     <main>
@@ -19,25 +18,42 @@
            
             <div class="contentinner">
                 <div class="titlebox box">
-                    <p class="question">Please answer the questions to the best of your ability! Good Luck</p>
+                    <p class="question">Please answer the questions to the best of your ability! Good Luck!</p>
                 </div>
+
                 <div class="questionbox box">
-                    <img src="./assets/images/6e4deea343f5a23686845b3e041231bb.gif" alt="Crusaders going to war" class="gifinner" data-starting-img="shown"> 
+                    <img src="./assets/images/6e4deea343f5a23686845b3e041231bb.gif" alt="Crusaders going to war" class="firepit" >  
+                    <div class="questionoptions"> </div>
+                    <div class="next">
+                        <button class="next-btn hide">Next</button>
+                    </div>
                 </div>
             </div>
         </div>
+
         <aside class="timerbox box">
+
             <div class="infobox box">
-                <p class="timer">Timer:30 Seconds</p>
-                <p class="questionsleft">Quesstions:1/10</p>
+                <p class="timerrecorder">Timer:    
+                    <span class="timer">30 </span> 
+                    <span class="seconds">Seconds</span>
+                </p>
+                <p class="questionsleft">Questions: 
+                    <span class="currquest">1</span> / 
+                    <span class="totalquest"></span></p>
                 <button class="reset-btn btn">Reset</button> 
             </div>
+
             <div class="scorebox box">
-                <p class="correct">Correct:</p>
-                <p class="incorrect">Incorrect:</p>
+                <p class="correctname">Correct: <span class="goodscore"></span></p>
+                <p class="Incorrectname">Incorrect: <span class="badscore"></span></p>
                 <img src="./assets/images/Knights_Templar_Cross.svg - Copy 1.png" alt="symbol of the knights templar" class="templar">
             </div>
         </aside>
+
+        <div class="highscorebox box">
+
+        </div>
     </main>
 
     <footer>

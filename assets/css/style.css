@@ -16,15 +16,17 @@ main{
     height: 50%;
     margin: 5%;
 }
-
-.gifinner, .templar{
+.hide{
+    display: none;
+}
+.firepit, .templar{
     object-fit: contain;
     z-index: 999; 
     position: absolute; 
     width: 100%;
 }
 
-.gifinner{
+.firepit{
     height: 100%;
 }
 
