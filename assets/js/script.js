@@ -38,40 +38,40 @@ var savedReco = [];
 // question bank
 var questionBank = [
     {
-        question: "When was the First Crusade?",
+        question: "JavaScript is a ___ -side programming language?",
         answers: [
-            { text:"1095 BCE", correct: false },
-            { text:"1095 CE", correct: true },
-            { text:"2020 #theworstyear", correct: false },
-            { text:"What are the Crusades?", correct: false },
+            { text:"Client", correct: false },
+            { text:"Server", correct: false },
+            { text:"Both", correct: true },
+            { text:"None", correct: false },
         ], 
     },
 
     {
-        question: "Which Crusade was successful in retaking the Holy Land?",
+        question: "Which of the following will write the message “Hello DataFlair!” in an alert box?",
         answers: [
-            { text:"The Children's Crusade", correct: false },
-            { text:"The Third Crusade", correct: false },
-            { text:"The First Crusade", correct: true },
-            { text:"That one with Orlando Bloom", correct: false },
+            { text:"alertBox(“Hello DataFlair!”);", correct: false },
+            { text:"alert(Hello DataFlair!);", correct: false },
+            { text:"msgAlert(“Hello DataFlair!”);", correct: false },
+            { text:"alert(“Hello DataFlair!”);", correct: true },
         ] 
     },
     {
-        question: "Which of the following did Richard III of Enlgand do that no one had done to take his army to the Holy Land?",
+        question: "How do you find the minimum of x and y using JavaScript?",
         answers: [
-            { text:"He walked like a G", correct: false },
-            { text:"He took the train", correct: false },
-            { text:"He used Boats", correct: true },
-            { text:"He teleported", correct: false },
+            { text:"min(x,y);", correct: false },
+            { text:"Math.min(x,y)", correct: true },
+            { text:"Math.min(xy)", correct: false },
+            { text:"min(xy);", correct: false },
         ]
     },
     {
-        question: 'The rivalry between Richard III and Salah ad-Din can be described as "____" ?',
+        question: 'Which are the correct "if" statements to execute certain code if “x” is equal to 2',
         answers: [
-            { text:"Besties", correct: false },
-            { text:"Mutual Respect", correct: true },
-            { text:"Absolute Hatred", correct: false },
-            { text:"They wrote eachother love letters", correct: false },
+            { text:"if(x 2)", correct: false },
+            { text:"if(x = 2)", correct: false },
+            { text:"if(x == 2)", correct: true },
+            { text:"if(x != 2 )", correct: false },
         ]
     }
 ]

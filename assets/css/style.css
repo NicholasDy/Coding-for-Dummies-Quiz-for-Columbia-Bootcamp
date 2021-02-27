@@ -175,13 +175,13 @@ article{
 }
 
 /* Img */
-.firepit, .templar{
+.firepit, .Dummies{
     object-fit: contain;
     z-index: 999; 
     width: 100%;
 }
 
-.templar {
+.Dummies {
     max-height: 100px;
 }
 
