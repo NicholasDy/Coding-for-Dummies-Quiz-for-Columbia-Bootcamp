@@ -10,55 +10,77 @@
     <header class="box">
         <h1>Crusade's Quiz</h1>
         <p>Are you prepared?</p>
+        <h1 class="hide">Game over</h1>
+        <p class="hide">You Failed</p>
         <button class="start-btn btn">Yes</button>
     </header>
     
     <main>
-        <div class="contentbox box">
-           
-            <div class="contentinner">
-                <div class="titlebox box">
-                    <p class="question">Please answer the questions to the best of your ability! Good Luck!</p>
-                </div>
+        <article class="boxlayout">
+            <div class="contentbox box">
+                <div class="contentinner">
+                    <div class="titlebox box">
+                        <p class="question">You are going to have a minute and a half to complete all of the questions. Please answer them to the best of your ability! Good Luck!</p>
+                    </div>
 
-                <div class="questionbox box">
-                    <img src="./assets/images/6e4deea343f5a23686845b3e041231bb.gif" alt="Crusaders going to war" class="firepit" >  
-                    <div class="questionoptions"> </div>
-                    <div class="next">
-                        <button class="next-btn hide">Next</button>
+                    <div class="questionbox box">
+                        <img src="./assets/images/6e4deea343f5a23686845b3e041231bb.gif" alt="Crusaders going to war" class="firepit" >  
+                        <div class="questionoptions"> </div>
+                        <div class="next">
+                            <button class="next-btn end-btn hide">Next</button>
+                            <button class="done-btn end-btn hide">Done</button>
+                        </div>
                     </div>
                 </div>
             </div>
+
+            <aside class="timerbox box">
+
+                <div class="infobox box">
+                    <p class="timerrecorder timercounters">Timer:    
+                        <span class="timer">90</span> 
+                        <span class="seconds">Seconds</span>
+                    </p>
+                    <p class="questionsleft timercounters">Questions: 
+                        <span class="currquest">1</span> / 
+                        <span class="totalquest"></span></p>
+                    <button class="reset-btn btn">Reset</button> 
+                </div>
+
+                <div class="scorebox box">
+                    <p class="correctname">Correct: <span class="goodscore"></span></p>
+                    <img src="./assets/images/Knights_Templar_Cross.svg - Copy 1.png" alt="symbol of the knights templar" class="templar">
+                </div>
+            </aside>
+        </article>
+
+        <div class="savebox box hide">
+            <p class="scorescript">Congrats you answered all the questions in time! Record your score for later.</p>
+            <form>
+                <input type="text" name="name" id="inputname" placeholder="Enter your name here"/>
+                <button class="save-btn" type="submit">Save</button>
+            </form>
         </div>
 
-        <aside class="timerbox box">
-
-            <div class="infobox box">
-                <p class="timerrecorder">Timer:    
-                    <span class="timer">30 </span> 
-                    <span class="seconds">Seconds</span>
-                </p>
-                <p class="questionsleft">Questions: 
-                    <span class="currquest">1</span> / 
-                    <span class="totalquest"></span></p>
-                <button class="reset-btn btn">Reset</button> 
-            </div>
-
-            <div class="scorebox box">
-                <p class="correctname">Correct: <span class="goodscore"></span></p>
-                <p class="Incorrectname">Incorrect: <span class="badscore"></span></p>
-                <img src="./assets/images/Knights_Templar_Cross.svg - Copy 1.png" alt="symbol of the knights templar" class="templar">
-            </div>
-        </aside>
+        <div class="restartbox box hide">
+            <h2>You did not finish!</h2>
+            <p>I am sorry but you did not finish the quiz in time, you can try again by clicking restart!</p>
+            <button class="restart-btn btn">Restart</button> 
+        </div>
 
         <div class="highscorebox box">
-
+            <h2>Score Board</h2>
+            <div class="nameboard">
+            </div>
         </div>
+
+       
     </main>
 
-    <footer>
-
+    <footer class="box">
+        <p>Information provided by my education from the Queen's University History department and the internet</p>
     </footer>
+
     <script src="./assets/js/script.js"></script>
 </body>
 </html>

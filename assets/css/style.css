@@ -6,31 +6,43 @@
     --infocardcolor: white;
 }
 
-body {
-   /* need a background that is going to look like a castle wall*/
-}
-
-main{
-    display: flex;
-    justify-content: space-between;
-    height: 50%;
-    margin: 5%;
-}
 .hide{
     display: none;
 }
-.firepit, .templar{
-    object-fit: contain;
-    z-index: 999; 
-    position: absolute; 
-    width: 100%;
+
+/* box rounded edges */
+.box {
+    border-radius: 20px;
 }
 
-.firepit{
-    height: 100%;
+main{
+    position: relative;
 }
 
-header{
+
+
+/* Buttons */
+.reset-btn{
+   margin: 5%;
+}
+
+.btn {
+    background-color: #d0d5d1;
+}
+.save-btn{
+    font-size: 20px;
+}
+
+.answer-btn{
+    padding: 15px 32px;
+}
+
+.end-btn{
+    padding: 15px 32px;
+}
+
+/* Header bars */
+header, footer, .highscorebox{
     text-align: center;
     border: var(--border);
     background-image: var(--boxcolor);
@@ -38,14 +50,19 @@ header{
     margin: 5%;
 }
 
-.box {
-    border-radius: 20px;
+footer {
+    height: 10%;
 }
 
-.btn{
-    background-color: #d0d5d1;
+/* Central container */
+article{
+    display: flex;
+    justify-content: space-between;
+    height: 50%;
+    margin: 5%;
 }
 
+/* backgrounds of the boxes for the center content */
 .contentbox, .timerbox{
     border:var(--border);
     background-image: var(--boxcolor);
@@ -62,13 +79,14 @@ header{
     justify-content: space-around;
     align-items: center;
     z-index: 899;
+    max-height: 892px;
+    min-height: 350px;
 }
 
 .contentinner{
     width: 100%;
     height: 100%;
 }
-
 
 .timerbox{
     display: flex;
@@ -87,6 +105,11 @@ header{
     margin-top:5%;
 }
 
+.titlebox {
+    display: flex;
+    justify-content: center;
+}
+
 .questionbox, .scorebox{
     border: var(--border);
     z-index: 800;
@@ -96,12 +119,74 @@ header{
     position: relative;
 }
 
-.infobox{
-    position: relative;
+.scorebox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.reset-btn{
+.questionoptions{
+    padding: 5%;
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 10px;
+}
+
+.next{
+   display: flex;
+   justify-content: center;
+}
+
+.question{
+    padding: 5px;
+}
+
+.infobox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+ 
+/* ScoreBoard */
+.highscorebox{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+/* Scoreboard font */
+.scorescript, .inputname{
+    font-size: 20px; 
+}
+
+/* SaveBox */
+.savebox, .restartbox{
+    text-align: center;
     position: absolute;
-    left: 50px;
-    bottom: 1%;
+    border: var(--border);
+    background-image: var(--boxcolor);
+    width: 300px;
+    height: 200px;
+    left: 50%;
+    top: 50%;
+    margin-top:-50px;  
+    margin-left:-100px;
+    z-index: 999999;
+}
+
+/* Img */
+.firepit, .templar{
+    object-fit: contain;
+    z-index: 999; 
+    width: 100%;
+}
+
+.templar {
+    max-height: 100px;
+}
+
+.firepit{
+    height: 100%;
+    position: absolute; 
+    bottom: 1px;
 }

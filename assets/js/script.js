@@ -1,26 +1,21 @@
-// GIVEN I am taking a code quiz
-// WHEN I click the start button
-// THEN a timer starts and I am presented with a question
-// WHEN I answer a question
-// THEN I am presented with another question
-// WHEN I answer a question incorrectly
-// THEN time is subtracted from the clock
-// WHEN all questions are answered or the timer reaches 0
-// THEN the game is over
-// WHEN the game is over
-// THEN I can save my initials and my score
-
-// declare all my variables 
 var startBtn = document.querySelector(".start-btn");
 var resetBtn = document.querySelector(".reset-btn");
 var nextBtn = document.querySelector(".next-btn");
 var answerBtn = document.querySelector(".questionoptions")
+var doneBtn = document.querySelector(".done-btn")
+var saveBtn = document.querySelector(".save-btn")
+var restartBtn = document.querySelector(".restart-btn")
+var inputName = document.querySelector("#inputname")
 
 var firePitImg = document.querySelector(".firepit")
 
 var questionEl = document.querySelector(".question");
 var questionBox = document.querySelector(".questionbox");
 var questionOptions = document.querySelector(".questionoptions");
+var saveBox = document.querySelector(".savebox");
+var nameBoard = document.querySelector(".nameboard");
+var restartBox = document.querySelector(".restartbox");
+
 
 var timerEl = document.querySelector(".timer");
 var secondsEl = document.querySelector(".seconds");
@@ -32,69 +27,65 @@ var incorrectEl = document.querySelector(".badscore");
 var currQuest = document.querySelector(".currquest")
 var totalQuest = document.querySelector(".totalquest")
 var totalCorr = document.querySelector(".goodscore")
-var totalInCorr = document.querySelector(".badscore")
 
 var currentQuestionsIndex = 0
 var timer; 
 var timerCounter;
-var isWin = false
+var startingTime = 90
+var savedReco = [];
 
 
 // question bank
 var questionBank = [
     {
-        question: "question 1",
+        question: "When was the First Crusade?",
         answers: [
-            { text:"answer 1.1", correct: true },
-            { text:"answer 1.2", correct: false },
-            { text:"answer 1.3", correct: false },
+            { text:"1095 BCE", correct: false },
+            { text:"1095 CE", correct: true },
+            { text:"2020 #theworstyear", correct: false },
+            { text:"What are the Crusades?", correct: false },
         ], 
-    
-        
     },
 
     {
-        question: "question 2 ",
+        question: "Which Crusade was successful in retaking the Holy Land?",
         answers: [
-            { text:"answer 2.1", correct: true },
-            { text:"answer 2.2", correct: false },
-            { text:"asnwer 2.3", correct: false },
-        ]
-        
+            { text:"The Children's Crusade", correct: false },
+            { text:"The Third Crusade", correct: false },
+            { text:"The First Crusade", correct: true },
+            { text:"That one with Orlando Bloom", correct: false },
+        ] 
     },
     {
-        question: "question 3 ",
+        question: "Which of the following did Richard III of Enlgand do that no one had done to take his army to the Holy Land?",
         answers: [
-            { text:"answer 2.1", correct: true },
-            { text:"answer 2.2", correct: false },
-            { text:"asnwer 2.3", correct: false },
+            { text:"He walked like a G", correct: false },
+            { text:"He took the train", correct: false },
+            { text:"He used Boats", correct: true },
+            { text:"He teleported", correct: false },
         ]
-        
     },
     {
-        question: "question 4 ",
+        question: 'The rivalry between Richard III and Salah ad-Din can be described as "____" ?',
         answers: [
-            { text:"answer 2.1", correct: true },
-            { text:"answer 2.2", correct: false },
-            { text:"asnwer 2.3", correct: false },
+            { text:"Besties", correct: false },
+            { text:"Mutual Respect", correct: true },
+            { text:"Absolute Hatred", correct: false },
+            { text:"They wrote eachother love letters", correct: false },
         ]
-        
-    },
+    }
 ]
 
-// function init 
-function init() {
-    // sets the scores to 0 
+
+function init() { 
     totalQuest.innerText = questionBank.length
     totalCorr.innerText = 0
-    totalInCorr.innerText = 0 
+    timerEl.innerText = 999
   };
 
-//   start the quiz
-function startGame() {
-    startBtn.disabled = true;
+function startGame() { 
     isWin = false;
-    timerCounter = 3;
+    timerCounter = startingTime;
     currentQuestionsIndex = 0;
     removeImg();
     startTimer(); 
@@ -104,11 +95,11 @@ function startGame() {
     localStorage.removeItem("incorrect",)
 };
 
-function nextQuestion() {
+function nextQuestion() { 
     showQuestion(questionBank[currentQuestionsIndex]);
 }
 
-function showQuestion(question){
+function showQuestion(question){ 
     questionEl.innerText = question.question
     question.answers.forEach(answer => { 
         var button = document.createElement("button")
@@ -123,32 +114,34 @@ function showQuestion(question){
 }
 
 function selectAnswer(event){
+    document.querySelectorAll(".answer-btn").forEach(function (element) {
+        element.setAttribute("disabled", true)
+    })
     const selectedBtn = event.target
     const correct = selectedBtn.dataset.correct
     var executed = false;
     if (correct && !executed) {
         answerCorrect()      
     } else if (!correct){
-        answerIncorrect()
+        // answerIncorrect()
+        clearInterval(timer)
+        timerCounter = timerCounter - 4
+        startTimer()
     }
-    if (questionBank.length > currentQuestionsIndex + 2){
-    nextBtn.classList.remove("hide")
+    if (questionBank.length > currentQuestionsIndex + 1){
+        nextBtn.classList.remove("hide")
+    } else {
+        doneBtn.classList.remove("hide")
     }
-
-    //  else {
-    //     startBtn.innerText = "Record Score"
-    // }
 }
 
 function resetQuest(){
-    // answerBtn.removeChild(button)
     nextBtn.classList.add("hide")
     while (answerBtn.firstChild){
         answerBtn.removeChild(answerBtn.firstChild)
     }
 }
-       
-
+    
 function startTimer () {
     timer = setInterval(function(){
         timerCounter--;
@@ -160,55 +153,80 @@ function startTimer () {
             if (isWin && timerCounter > 0){
                 clearInterval(timer);
             }
-        }
-        if (timerCounter === 0){
-            // youFailed();
+        } else {
+            youFailed();
             clearInterval(timer);
+            document.querySelectorAll(".answer-btn").forEach(function (element) {
+                element.setAttribute("disabled", true)
+            })
         }
     }, 1000);
 }
 
+function youFailed() {
+    restartBox.classList.remove("hide")
+}
 
-function resetGame() {
-    
-};
-
-// removes the image from the screen
 function removeImg(){
-    firePitImg.parentNode.removeChild(firePitImg);
+    firePitImg.classList.add("hide");
 };
 
 function increaseQuestCount() {
     currQuest.textContent = currentQuestionsIndex + 1    
 }
-// question was correct 
+
 function answerCorrect(){
     var correct = localStorage.getItem("correct")
     correct++ 
     totalCorr.textContent = correct
+    var num = Number(null)
+    document.writeln
+    if (totalCorr === num){
+        totalCorr.innerText = 0
+    }
     localStorage.setItem("correct", correct)
 }
 
-// question was incorrect
-function answerIncorrect() {
-    var incorrect = localStorage.getItem("incorrect")
-    incorrect++ 
-    totalInCorr.textContent = incorrect
-    localStorage.setItem("incorrect", incorrect)
+function gameDone() {  
+    clearInterval(timer)
+    saveBox.classList.remove("hide")
 }
 
-// you passed function
-function youPassed() {
-
+function storeScore() {
+    localStorage.setItem("Names", JSON.stringify(savedReco))
 }
-// you failed function
-function youFailed () {}
-    // can have it so that it runs the no game function which is just an animated game over 
 
-// calling the init function
+function displaynames() {
+    nameBoard.innerHTML = "";
+    for (var i = 0; i < savedReco.length; i++){
+        var newlist = savedReco[i];
+        var p = document.createElement("p")
+        p.innerText = newlist
+        p.setAttribute("data-index", i)
+        nameBoard.appendChild(p)
+    }
+}
+
+function resetGame() {
+    clearInterval(timer)
+    resetQuest()
+    firePitImg.parentNode.appendChild(firePitImg);
+    totalQuest.innerText = questionBank.length;
+    totalCorr.innerText = 0;
+    firePitImg.classList.remove("hide")
+    startBtn.classList.remove("hide")
+    currentQuestionsIndex = 0
+    questionEl.innerText = "Please answer the questions to the best of your ability! Good Luck!"
+    currQuest.innerText = 1
+    timerEl.innerText = 90
+    doneBtn.classList.add("hide")
+    saveBox.classList.add("hide")
+    restartBox.classList.add("hide")
+};
+
 init();
 
-// listener function to start the quiz
+
 startBtn.addEventListener("click", startGame);
 nextBtn.addEventListener("click", ()=> {
     currentQuestionsIndex++
@@ -216,5 +234,21 @@ nextBtn.addEventListener("click", ()=> {
     resetQuest()
     nextQuestion()
     increaseQuestCount()
-} )
-// resetBtn.addEventListener("click", resetGame); Look up reset type for buttons
+})
+resetBtn.addEventListener("click", resetGame); 
+restartBtn.addEventListener("click", resetGame); 
+doneBtn.addEventListener("click", gameDone);
+saveBtn.addEventListener("click", function (event) {
+    var correct = localStorage.getItem("correct")
+    event.preventDefault();
+    var savedNames = inputName.value.trim();
+    if ( correct ){
+        savedReco.push(savedNames + " " + correct + "/" + questionBank.length);
+    } else if ( correct === null){
+        savedReco.push(savedNames + " " + 0 + "/" + questionBank.length)
+    }
+    inputName.value =""
+    storeScore()
+    displaynames()
+    resetGame()
+});
