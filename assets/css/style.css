@@ -119,6 +119,10 @@ article{
     position: relative;
 }
 
+.questionbox{
+    height: 70%;
+}
+
 .scorebox {
     display: flex;
     flex-direction: column;
