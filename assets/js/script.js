@@ -80,7 +80,7 @@ var questionBank = [
 function init() { 
     totalQuest.innerText = questionBank.length
     totalCorr.innerText = 0
-    timerEl.innerText = 999
+    timerEl.innerText = 90
   };
 
 function startGame() { 
