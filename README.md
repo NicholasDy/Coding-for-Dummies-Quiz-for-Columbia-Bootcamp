@@ -13,4 +13,4 @@ Code Style; HTML, CSS & Javascript
 Link to the website; 
 https://nicholasdy.github.io/Coding-for-Dummies-Quiz-for-Columbia-Bootcamp/
 
-Credit - Colombia University Coding Bootcamp
+Credit - Colombia University Coding Bootcamp & data-flair.training for the questions.
